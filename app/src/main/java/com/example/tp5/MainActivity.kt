@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 setWeather(it)
         }
 
-        val cities = listOf<String>("Tunis", "London", "Paris")
+        val cities = listOf<String>("Tunis", "London", "Paris","Rome")
         val citiesAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, cities)
         val spinner = binding.citiesSpinner
         spinner.adapter = citiesAdapter
@@ -66,15 +66,17 @@ class MainActivity : AppCompatActivity() {
             image.setImageResource(R.drawable.clouds)
 
          */
-        var uri : String =""
+        var uri : String ="@drawable/lightrain"
         if(weather.weather[0].description=="overcast clouds"){
             uri = "@drawable/overcast" // where myresource (without the extension) is the file
-
-
 
         }
         else if(weather.weather[0].description=="light rain"){
             uri = "@drawable/lightrain"
+
+        }
+        else if(weather.weather[0].description=="mist"){
+            uri = "@drawable/mist"
 
         }
         val imageResource = resources.getIdentifier(uri, null, packageName)

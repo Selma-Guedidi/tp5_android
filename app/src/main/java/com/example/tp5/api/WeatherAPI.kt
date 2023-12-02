@@ -1,4 +1,4 @@
-package com.example.tp5
+package com.example.tp5.api
 
 import com.example.tp5.weather_models.WeatherResponse
 import com.example.tp5.forecast_models.ForecastResponse
@@ -11,7 +11,7 @@ interface WeatherAPI {
     @GET("weather?APPID=17db59488cadcad345211c36304a9266&units=metric")
     fun getWeather(@Query("q") city : String) : Call<WeatherResponse>
 
-    @GET("forecast/daily?APPID=17db59488cadcad345211c36304a9266&units=metric")
+    @GET("forecast/daily?APPID=17db59488cadcad345211c36304a9266&units=metric&cnt=16")
     fun getForecast(@Query("q") city : String): Call<ForecastResponse>
 
 }

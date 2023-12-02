@@ -1,7 +1,8 @@
-package com.example.tp5
+package com.example.tp5.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.tp5.api.RetrofitHelper
 import com.example.tp5.weather_models.WeatherResponse
 import retrofit2.Call
 import retrofit2.Callback

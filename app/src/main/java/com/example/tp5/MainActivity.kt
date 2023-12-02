@@ -8,7 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.tp5.databinding.ActivityMainBinding
 import com.example.tp5.weather_models.WeatherResponse
-import com.example.tp5.WeatherViewModel
+import com.example.tp5.viewModel.WeatherViewModel
 import com.google.android.material.R
 
 class MainActivity : AppCompatActivity() {

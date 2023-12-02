@@ -7,7 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp5.databinding.WeatherItemBinding
 import com.example.tp5.forecast_models.ForecastResponse
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 
 class WeatherAdapter(private val forecast: ForecastResponse?) :
@@ -22,10 +24,16 @@ RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.pressure.text = "Pressure ${forecast?.list?.get(position)?.pressure.toString()}: "
-        holder.binding.temperature.text = "Temperature ${forecast?.list?.get(position)?.temp?.day.toString()}: "
-        holder.binding.humidity.text = "Humidity ${forecast?.list?.get(position)?.humidity.toString()}: "
-        holder.binding.day.text = "Date ${Date(forecast?.list?.get(position)?.dt.toString().toLong()*1000)}: "
+        holder.binding.pressure.text = "Pressure: ${forecast?.list?.get(position)?.pressure.toString()}"
+        holder.binding.temperature.text = "Temperature: ${forecast?.list?.get(position)?.temp?.day.toString()}"
+        holder.binding.humidity.text = "Humidity: ${forecast?.list?.get(position)?.humidity.toString()}"
+        val rawDate = forecast?.list?.get(position)?.dt?.times(1000L)
+        val formattedDate = rawDate?.let {
+            val date = Date(it)
+            val dateFormat = SimpleDateFormat("EEE MMM dd yyyy", Locale.getDefault())
+            dateFormat.format(date)
+        } ?: ""
+        holder.binding.day.text = " $formattedDate "
     }
 
     override fun getItemCount(): Int {
